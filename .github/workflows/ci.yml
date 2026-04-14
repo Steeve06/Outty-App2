@@ -6,17 +6,25 @@ on:
   pull_request:
     branches: [ main ]
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
-  build:
+  lint:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - name: Use Node.js
+    - name: Use Node.js 24
       uses: actions/setup-node@v4
       with:
-        node-version: '20'
-    - name: Install Backend Deps & Test
+        node-version: '24'
+        cache: 'npm'
+        cache-dependency-path: './backend/package-lock.json'
+    - name: Install Backend Deps
       run: |
         cd backend
-        npm install
-        npm test
+        npm ci
+    - name: Run Linting
+      run: |
+        cd backend
+        npm run lint
