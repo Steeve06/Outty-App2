@@ -3,10 +3,12 @@ import { View, Text, ScrollView, StyleSheet, Image, TouchableOpacity, useColorSc
 import { Colors } from '../constants/Colors';
 import ConnectedAccount from '../components/ConnectedAccount';
 import { Ionicons } from '@expo/vector-icons'; // For Log Out/Delete icons
+import { useRouter } from 'expo-router';
 
 export default function ProfileScreen() {
   const colorScheme = useColorScheme() ?? 'light';
   const theme = Colors[colorScheme];
+  const router = useRouter();
 
   return (
     <ScrollView 
@@ -85,7 +87,10 @@ export default function ProfileScreen() {
 
       {/* Action List */}
       <View style={styles.actionContainer}>
-        <TouchableOpacity style={[styles.actionRow, { borderColor: theme.border }]}>
+        <TouchableOpacity 
+          style={[styles.actionRow, { borderColor: theme.border }]}
+          onPress={() => router.replace('/login')} // This sends them back to Login
+        >
           <Ionicons name="log-out-outline" size={20} color={theme.text} />
           <Text style={[styles.actionText, { color: theme.text }]}>Log Out</Text>
         </TouchableOpacity>

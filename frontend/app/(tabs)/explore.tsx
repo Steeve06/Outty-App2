@@ -1,5 +1,5 @@
 import ProfileScreen from '../../screens/ProfileScreen';
 
-export default function TabTwoScreen() {
+export default function ProfileTab() {
   return <ProfileScreen />;
 }
