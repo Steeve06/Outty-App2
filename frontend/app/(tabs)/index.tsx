@@ -1,5 +1,6 @@
 import { Redirect } from 'expo-router';
+import DiscoverScreen from '@/screens/DiscoverScreen';
 
-export default function Index() {
-  return <Redirect href="/(tabs)/explore" />;
+export default function DiscoverTab() {
+  return <DiscoverScreen />;
 }
