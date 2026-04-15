@@ -8,6 +8,7 @@ export default function RootLayout() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <Stack screenOptions={{ headerShown: false }}>
+        
         {/* index is our redirector, so it doesn't need a header */}
         <Stack.Screen name="index" />
         
